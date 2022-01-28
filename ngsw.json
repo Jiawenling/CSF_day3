@@ -1,0 +1,81 @@
+{
+  "configVersion": 1,
+  "timestamp": 1643351552031,
+  "index": "CSF_day3/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "CSF_day3/favicon.ico",
+        "CSF_day3/index.html",
+        "CSF_day3/main.731c2c7bd90e5366.js",
+        "CSF_day3/manifest.webmanifest",
+        "CSF_day3/polyfills.f74ade7bde41ef27.js",
+        "CSF_day3/runtime.5797581d1b9fc8de.js",
+        "CSF_day3/styles.3f0597960bc2e56d.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "CSF_day3/assets/icons/icon-128x128.png",
+        "CSF_day3/assets/icons/icon-144x144.png",
+        "CSF_day3/assets/icons/icon-152x152.png",
+        "CSF_day3/assets/icons/icon-192x192.png",
+        "CSF_day3/assets/icons/icon-384x384.png",
+        "CSF_day3/assets/icons/icon-512x512.png",
+        "CSF_day3/assets/icons/icon-72x72.png",
+        "CSF_day3/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "CSF_day3/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "CSF_day3/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "CSF_day3/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "CSF_day3/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "CSF_day3/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "CSF_day3/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "CSF_day3/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "CSF_day3/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "CSF_day3/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "CSF_day3/index.html": "ebfd08d33567d1f864d249c6e6cd09bb6e5a0bfa",
+    "CSF_day3/main.731c2c7bd90e5366.js": "bba21ecbbf9846df21b3f3d64c688d069936b720",
+    "CSF_day3/manifest.webmanifest": "5c930eb799bca6ac66a2b36662589f5e0dabc087",
+    "CSF_day3/polyfills.f74ade7bde41ef27.js": "138165315f46a9a25b824494ced09b4446e87def",
+    "CSF_day3/runtime.5797581d1b9fc8de.js": "04af7e31c05eb2eac2cdc583a56969b22433b9e4",
+    "CSF_day3/styles.3f0597960bc2e56d.css": "ccd46f3803aca4e1f8db6d2bef3773d8e18f25f8"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
