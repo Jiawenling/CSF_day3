@@ -18,6 +18,7 @@ export class AppComponent {
   editTaskId: string = ''
   indexToEdit: number=0
   editMode: boolean = false
+  taskListNotEmpty:boolean= false
 
 
 
@@ -39,10 +40,12 @@ export class AppComponent {
       this.form.value.task,
       this.form.value.priority,
       this.form.value.dueDate,
+      //formdirective is reset on HTML itself
       taskId
     )
 
     this.toDosValues.push(SingleToDo)
+    this.taskListNotEmpty =true
     // this.form.get("task")?.reset();
     // this.form.get("priority")?.reset();
     // this.form.get("dueDate")?.reset();
@@ -85,7 +88,6 @@ export class AppComponent {
     this.taskFormControl.reset();
     this.priorityFormControl.reset();
     this.dueDateFormControl.reset();
-    this.form.reset()
     this.editMode= false
   }
 

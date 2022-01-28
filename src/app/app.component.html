@@ -16,7 +16,7 @@
     fxLayoutGap="1em"
   >
     <div>
-      <form [formGroup]="form" (ngSubmit)="addToDo()" #formDirective="ngForm">
+      <form [formGroup]="form" (ngSubmit)="addToDo(); formDirective.resetForm()" #formDirective="ngForm">
         <mat-card>
           <mat-card-header>
             <mat-card-title>Add ToDo</mat-card-title>
@@ -52,7 +52,7 @@
               </mat-form-field>
               <div>
                 <button mat-raised-button color = "primary" type = "submit" [disabled]="form.invalid || editMode">Add</button>
-                <button mat-raised-button color = "primary" type = "button" (click)="updateTask(formDirective)" [disabled]="!editMode">Update</button>
+                <button mat-raised-button color = "primary" type = "button" (click)="updateTask(formDirective)" [ngStyle]="{'display': editMode? 'inline': 'none'}">Update</button>
               </div>
             </div>
           </mat-card-content>
@@ -63,7 +63,7 @@
         <p>
           Your form status is : {{ form.status }}
         </p>
-        <mat-card>
+        <mat-card *ngIf="taskListNotEmpty">
           <mat-card-content fxLayout="column" fxLayoutGap="10vw">
             <div [ngStyle]="{border: '3px solid black'}">
               <h1 [ngStyle]="{color:'orange', padding: '1em'}">Task</h1>
@@ -75,7 +75,7 @@
                 <div
                 fxLayoutAlign="center center"
                 fxLayoutGap="1em">
-                  <mat-checkbox color="accent" ngModel (change) = "done = $event.checked">
+                  <mat-checkbox color="accent"  (change) ="done = $event.checked">
                     Done
                   </mat-checkbox>
                   <button [ngStyle]="{'overflow-wrap': 'break-word'}" type="button" (click)="deleteTask(t)" mat-mini-fab color="warn">
