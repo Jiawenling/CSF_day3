@@ -15,7 +15,8 @@
     fxLayout.sm = "column wrap"
     fxLayoutGap="1em"
   >
-    <div>
+    <div
+    fxFlex="1 1 auto">
       <form [formGroup]="form" (ngSubmit)="addToDo(); formDirective.resetForm()" #formDirective="ngForm">
         <mat-card>
           <mat-card-header>
@@ -63,38 +64,42 @@
         <p>
           Your form status is : {{ form.status }}
         </p>
-        <mat-card *ngIf="taskListNotEmpty">
-          <mat-card-content fxLayout="column" fxLayoutGap="10vw">
-            <div [ngStyle]="{border: '3px solid black'}">
-              <h1 [ngStyle]="{color:'orange', padding: '1em'}">Task</h1>
-              <div fxLayout="row wrap"
-                   fxLayoutAlign="space-between"
-                   [ngStyle]="{border: '3px solid black', margin:'1em',padding:'1em'}"
-                   *ngFor="let t of toDosValues">
-                <h2 [ngStyle] = "{'text-decoration': done? 'line-through':'none', 'text-decoration-color':'red' }">{{t.task}}</h2>
-                <div
-                fxLayoutAlign="center center"
-                fxLayoutGap="1em">
-                  <mat-checkbox color="accent"  (change) ="done = $event.checked">
-                    Done
-                  </mat-checkbox>
-                  <button [ngStyle]="{'overflow-wrap': 'break-word'}" type="button" (click)="deleteTask(t)" mat-mini-fab color="warn">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-                  <button (click)="editTask(t)" type ="button" mat-mini-fab color="warn" >
-                    <mat-icon>edit</mat-icon>
-                  </button>
-                </div>
-                <div fxFlex = '100'
-                fxLayoutAlign="space-between">
-                  <span>{{t.priority}}</span>
-                  <span>{{t.dueDate | date:"dd/MM/yyyy"}}</span>
-                </div>
-              </div>
-            </div>
-          </mat-card-content>
-        </mat-card>
       </form>
     </div>
+
+    <mat-card fxFlex="1 1 auto" *ngIf="taskListNotEmpty">
+      <mat-card-content fxLayout="column" fxLayoutGap="10vw">
+        <div [ngStyle]="{border: '3px solid black'}">
+          <h1 [ngStyle]="{color:'orange', padding: '1em'}">Task</h1>
+          <div fxLayout="row wrap"
+               fxLayoutAlign="space-between"
+               [ngStyle]="{border: '3px solid black', margin:'1em',padding:'1em'}"
+               *ngFor="let t of toDosValues; let i = index">
+            <h2
+              [ngStyle] = "{'text-decoration': t.status? 'line-through': ''}"
+            >{{t.task}}</h2>
+            <div
+              fxLayoutAlign="center center"
+              fxLayoutGap="1em">
+              <mat-checkbox color="accent"  (change) ="taskChecked($event,t)">
+                Done
+              </mat-checkbox>
+              <button [ngStyle]="{'overflow-wrap': 'break-word'}" type="button" (click)="deleteTask(t)" mat-mini-fab color="warn">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button (click)="editTask(t)" type ="button" mat-mini-fab color="warn" >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
+            <div fxFlexFill
+                 fxLayoutAlign="space-between">
+              <span>{{t.priority}}</span>
+              <span>{{t.dueDate | date:"dd/MM/yyyy"}}</span>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
   </div>
 </div>

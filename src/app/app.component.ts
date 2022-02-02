@@ -19,12 +19,12 @@ export class AppComponent {
   indexToEdit: number=0
   editMode: boolean = false
   taskListNotEmpty:boolean= false
-
-
+  status:boolean = false
 
   taskFormControl = new FormControl('', [Validators.required, Validators.minLength(3)])
   priorityFormControl = new FormControl('', [Validators.required])
   dueDateFormControl = new FormControl('', [Validators.required])
+
   constructor(private fb: FormBuilder){
     this.tomorrow.setDate(this.tomorrow.getDate()+1)
     this.form = this.fb.group({
@@ -40,8 +40,9 @@ export class AppComponent {
       this.form.value.task,
       this.form.value.priority,
       this.form.value.dueDate,
-      //formdirective is reset on HTML itself
-      taskId
+      //formdirective is reset on HTML itself --> (ngSubmit)="addToDo(); formDirective.resetForm()"
+      taskId,
+      this.status
     )
 
     this.toDosValues.push(SingleToDo)
@@ -58,9 +59,16 @@ export class AppComponent {
     localStorage.setItem(taskId, JSON.stringify(SingleToDo));
   }
 
+  taskChecked($event: any, t:Todo){
+    t.status = $event.checked
+  }
+
   deleteTask(t:Todo){
     let taskIndex = this.toDosValues.indexOf(t);
     this.toDosValues.splice(taskIndex,1);
+    if(this.toDosValues.length == 0){
+      this.taskListNotEmpty = false
+    }
     localStorage.removeItem(t.taskId);
   }
 
